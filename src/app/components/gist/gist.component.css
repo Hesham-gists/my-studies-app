@@ -1,0 +1,6 @@
+:host {
+  display: inline-block;
+  width: 99%;
+  height: 99%;
+  overflow: hidden;
+}
