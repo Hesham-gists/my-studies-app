@@ -1,23 +1,13 @@
 <div class="d-flex h-100">
-  <div *ngIf="!isSmallScreen" class="w-25 position-relative h-100">
-    <app-side-nav></app-side-nav>
-  </div>
-  <div
-    *ngIf="isSmallScreen"
-    class="offcanvas offcanvas-start"
+  <app-side-nav
     [class.show]="sideNavOpened"
-  >
-    <button
-      class="btn-close text-light position-absolute top-0 end-0 m-2"
-      (click)="sideNavOpened = false"
-    ></button>
-
-    <app-side-nav></app-side-nav>
-  </div>
-  <div
-    *ngIf="isSmallScreen && sideNavOpened"
-    class="offcanvas-backdrop fade show"
-  ></div>
+    [ngClass]="{
+      'w-25 position-relative h-100': !isSmallScreen,
+      'offcanvas offcanvas-start': isSmallScreen
+    }"
+    [isSmallScreen]="isSmallScreen"
+    [sideNavOpened]="sideNavOpened"
+  ></app-side-nav>
   <div
     class="position-relative h-100"
     [ngClass]="{
@@ -25,29 +15,13 @@
       'w-100': !sideNavOpened || isSmallScreen
     }"
   >
-    <div *ngIf="isSmallScreen" class="position-absolute top-0 end-0 my-3 mx-5">
-      <button
-        class="btn btn-sm btn-outline-secondary text-center"
-        (click)="sideNavOpened = !sideNavOpened"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          fill="#000"
-          class="bi bi-list"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-          />
-        </svg>
-      </button>
-    </div>
+    <app-menu-btn
+      *ngIf="isSmallScreen"
+      (click)="sideNavOpened = !sideNavOpened"
+    ></app-menu-btn>
+
     <div class="h-100">
       <router-outlet></router-outlet>
-      <app-gist gistId="25eb6432d2249225cc121f18719c5215"></app-gist>
     </div>
   </div>
 </div>

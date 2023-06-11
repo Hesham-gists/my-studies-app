@@ -4,3 +4,8 @@
   height: 99%;
   overflow: hidden;
 }
+
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+}

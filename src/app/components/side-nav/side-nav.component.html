@@ -1,29 +1,22 @@
-<div class="text-center m-2">
-  <img
-    src="assets/images/angular.svg"
-    width="50%"
-    height="100px"
-    alt="angular"
-  />
+<button
+  *ngIf="isSmallScreen"
+  class="btn-close text-light position-absolute top-0 end-0 m-2"
+  (click)="sideNavOpened = false"
+></button>
+
+<div class="text-center my-2">
+  <img src="assets/images/angular.svg" width="50%" alt="angular" />
 </div>
 <div class="list-group m-2">
   <a
-    href="#"
-    class="list-group-item list-group-item-action active"
-    aria-current="true"
+    class="list-group-item list-group-item-action"
+    [routerLink]="['/', '25eb6432d2249225cc121f18719c5215']"
+    routerLinkActive="active"
   >
-    The current link item
+    Component lifecycle methods
   </a>
-  <a href="#" class="list-group-item list-group-item-action"
-    >A second link item</a
-  >
-  <a href="#" class="list-group-item list-group-item-action"
-    >A third link item</a
-  >
-  <a href="#" class="list-group-item list-group-item-action"
-    >A fourth link item</a
-  >
-  <a class="list-group-item list-group-item-action disabled"
-    >A disabled link item</a
-  >
 </div>
+<div
+  *ngIf="isSmallScreen && sideNavOpened"
+  class="offcanvas-backdrop fade show"
+></div>
