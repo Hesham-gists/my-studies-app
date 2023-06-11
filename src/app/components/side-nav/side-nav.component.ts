@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -8,4 +8,8 @@ import { Component, Input } from '@angular/core';
 export class SideNavComponent {
   @Input() isSmallScreen: boolean = true;
   @Input() sideNavOpened: boolean = false;
+
+  @Output() sidenav_closed = new EventEmitter();
+
+  constructor() {}
 }

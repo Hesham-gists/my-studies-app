@@ -1,21 +1,30 @@
-<button
-  *ngIf="isSmallScreen"
-  class="btn-close text-light position-absolute top-0 end-0 m-2"
-  (click)="sideNavOpened = false"
-></button>
+<div
+  [ngClass]="{
+    'offcanvas offcanvas-start': isSmallScreen
+  }"
+  [class.show]="sideNavOpened"
+>
+  <button
+    *ngIf="isSmallScreen"
+    class="btn-close text-light position-absolute top-0 end-0 m-2"
+    (click)="sidenav_closed.emit()"
+  ></button>
 
-<div class="text-center my-2">
-  <img src="assets/images/angular.svg" width="50%" alt="angular" />
+  <div class="text-center my-2">
+    <img src="assets/images/angular.svg" width="50%" alt="angular" />
+  </div>
+  <div class="list-group m-2">
+    <a
+      class="list-group-item list-group-item-action"
+      [routerLink]="['/', '25eb6432d2249225cc121f18719c5215']"
+      routerLinkActive="active"
+      (isActiveChange)="sidenav_closed.emit()"
+    >
+      Component lifecycle methods
+    </a>
+  </div>
 </div>
-<div class="list-group m-2">
-  <a
-    class="list-group-item list-group-item-action"
-    [routerLink]="['/', '25eb6432d2249225cc121f18719c5215']"
-    routerLinkActive="active"
-  >
-    Component lifecycle methods
-  </a>
-</div>
+
 <div
   *ngIf="isSmallScreen && sideNavOpened"
   class="offcanvas-backdrop fade show"

@@ -1,13 +1,12 @@
 <div class="d-flex h-100">
   <app-side-nav
-    [class.show]="sideNavOpened"
-    [ngClass]="{
-      'w-25 position-relative h-100': !isSmallScreen,
-      'offcanvas offcanvas-start': isSmallScreen
-    }"
+    class="position-relative h-100"
+    [class.w-25]="!isSmallScreen"
     [isSmallScreen]="isSmallScreen"
     [sideNavOpened]="sideNavOpened"
+    (sidenav_closed)="sideNavOpened = false"
   ></app-side-nav>
+
   <div
     class="position-relative h-100"
     [ngClass]="{
